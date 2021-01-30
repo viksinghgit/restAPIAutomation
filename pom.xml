@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>restAPIAutomation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <suiteFilePath>testng_suites/testng.xml</suiteFilePath>
+        <paytm.automation.api>2.9-SNAPSHOT</paytm.automation.api>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
+        <maven.antrun.plugin.version>1.8</maven.antrun.plugin.version>
+        <maven.assembly.plugin.version>2.6</maven.assembly.plugin.version>
+        <maven.resources.plugin.version>2.7</maven.resources.plugin.version>
+        <maven.dependency.plugin.version>2.10</maven.dependency.plugin.version>
+
+        <codehaus.exec.plugin.version>1.4.0</codehaus.exec.plugin.version>
+        <codehaus.aspectj.plugin.version>1.8</codehaus.aspectj.plugin.version>
+        <jackson.version>2.5.2</jackson.version>
+        <apache.poi.version>4.1.1</apache.poi.version>
+        <extentreport.version>4.0.9</extentreport.version>
+        <restassured.version>4.3.3</restassured.version>
+        <testng.version>7.3.0</testng.version>
+        <cucumber.version>6.9.1</cucumber.version>
+        <junit.version>4.13.1</junit.version>
+    </properties>
+
+
+            <dependencies>
+
+                <dependency>
+                    <groupId>io.rest-assured</groupId>
+                    <artifactId>rest-assured</artifactId>
+                    <version>${restassured.version}</version>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/io.rest-assured/json-path -->
+                <dependency>
+                    <groupId>io.rest-assured</groupId>
+                    <artifactId>json-path</artifactId>
+                    <version>${restassured.version}</version>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+                <dependency>
+                    <groupId>io.rest-assured</groupId>
+                    <artifactId>json-schema-validator</artifactId>
+                    <version>${restassured.version}</version>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/io.rest-assured/xml-path -->
+                <dependency>
+                    <groupId>io.rest-assured</groupId>
+                    <artifactId>xml-path</artifactId>
+                    <version>${restassured.version}</version>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/io.rest-assured/scala-support -->
+                <dependency>
+                    <groupId>io.rest-assured</groupId>
+                    <artifactId>scala-support</artifactId>
+                    <version>${restassured.version}</version>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+                <dependency>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                    <version>${testng.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+                <dependency>
+                    <groupId>com.google.code.gson</groupId>
+                    <artifactId>gson</artifactId>
+                    <version>2.8.6</version>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+                <dependency>
+                    <groupId>io.cucumber</groupId>
+                    <artifactId>cucumber-java</artifactId>
+                    <version>${cucumber.version}</version>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+                <dependency>
+                    <groupId>io.cucumber</groupId>
+                    <artifactId>cucumber-junit</artifactId>
+                    <version>${cucumber.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <!-- https://mvnrepository.com/artifact/junit/junit -->
+                <dependency>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                    <version>${junit.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.cucumber</groupId>
+                    <artifactId>cucumber-junit</artifactId>
+                    <version>6.9.1</version>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                    <version>4.12</version>
+                    <scope>compile</scope>
+                </dependency>
+            </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+
+               <!-- <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.16</version>
+                    <configuration>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>${suiteFilePath}</suiteXmlFile>
+                        </suiteXmlFiles>
+                    </configuration>
+                </plugin>-->
+
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.2.1</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>java</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <testFailureIgnore>true</testFailureIgnore>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>net.masterthought</groupId>
+                    <artifactId>maven-cucumber-reporting</artifactId>
+                    <version>5.4.0</version>
+                    <executions>
+                        <execution>
+                            <id>execution</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <projectName>cucumber-jvm-example</projectName>
+                                <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
+                                <skip>false</skip>
+                                <!-- output directory for the generated report -->
+                                <outputDirectory>${project.build.directory}</outputDirectory>
+                                <!-- optional, defaults to outputDirectory if not specified -->
+                                <inputDirectory>${project.build.directory}/jsonReports</inputDirectory>
+                                <jsonFiles>
+                                    <!-- supports wildcard or name pattern -->
+                                    <param>**/*.json</param>
+                                </jsonFiles>
+                                <!-- optional, defaults to outputDirectory if not specified -->
+                                <parallelTesting>false</parallelTesting>
+                                <!-- optional, set true to group features by its Ids -->
+                                <mergeFeaturesById>false</mergeFeaturesById>
+                                <!-- optional, set true to get a final report with latest results of the same test from different test runs -->
+                                <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+                                <!-- optional, set true to fail build on test failures -->
+                                <checkBuildResult>false</checkBuildResult>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>
